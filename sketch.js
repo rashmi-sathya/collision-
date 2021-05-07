@@ -1,7 +1,7 @@
 
-var fixedRect, movingRect;
+var fixedRect, movingRect; 
 var gameObject1, gameObject2;
-
+var fixedRect1
 function setup() {
   createCanvas(1200,800);
  
@@ -11,7 +11,8 @@ function setup() {
 
   fixedRect = createSprite(100, 100, 50, 50);
   fixedRect.shapeColor = "green";
-  
+  fixedRect1 = createSprite(100, 100, 50, 50);
+  fixedRect1.shapeColor = "green";
   
 }
 
@@ -21,8 +22,8 @@ function draw() {
   movingRect.y = World.mouseY;
 
   if(isTouching()){
-    movingRect.shapeColor = "blue";
-    fixedRect.shapeColor = "blue";
+    movingRect.shapeColor = "red";
+    fixedRect.shapeColor = "red";
   }
   
   else {
@@ -31,6 +32,18 @@ function draw() {
     fixedRect.shapeColor = "green"
   }
  
+   if(isTouching()){
+    movingRect.shapeColor = "red";
+    fixedRect1.shapeColor = "red";
+  }
+  
+  else {
+    movingRect.shapeColor = "green";
+  
+    fixedRect1.shapeColor = "green"
+  }
+  
+  
 
 //bounceOff(movingRect,fixedRect)
   drawSprites();
@@ -41,6 +54,16 @@ function isTouching(){
     && fixedRect.x - movingRect.x < fixedRect.width/2 + movingRect.width/2
     && movingRect.y - fixedRect.y < fixedRect.height/2 + movingRect.height/2
     && fixedRect.y - fixedRect.y < fixedRect.height/2 + movingRect.height/2) {
+       return true;
+  }
+  else {
+    return false;
+  } 
+    
+     if (movingRect.x - fixedRect1.x < fixedRect1.width/2 + movingRect.width/2
+    && fixedRect1.x - movingRect.x < fixedRect1.width/2 + movingRect.width/2
+    && movingRect.y - fixedRect1.y < fixedRect1.height/2 + movingRect.height/2
+    && fixedRect1.y - fixedRect1.y < fixedRect1.height/2 + movingRect.height/2) {
     
     return true;
   }
